@@ -30,11 +30,11 @@ public class Donation {
     @NotNull
     private Integer quantity;
 
-    @OneToMany(mappedBy = "donation", cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name="id_categoory")
     private List<Category> categories = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "institution_id")
     private Institution institution;
 
     @NotBlank
