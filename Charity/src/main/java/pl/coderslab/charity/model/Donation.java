@@ -47,7 +47,7 @@ public class Donation {
     @Column(name = "zip_code")
     String zipCode;
 
-    @NotBlank
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "pick_up_date")
     LocalDate pickUpDate;
 
