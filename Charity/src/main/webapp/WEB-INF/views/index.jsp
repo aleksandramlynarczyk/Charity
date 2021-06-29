@@ -73,7 +73,7 @@
         </div>
     </div>
 
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="/donation/new-donation" class="btn btn--large">Nowy dar</a>
 </section>
 
 <section class="about-us">
