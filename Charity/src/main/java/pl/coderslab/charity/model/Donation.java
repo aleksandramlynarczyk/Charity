@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.apache.tomcat.jni.Address;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,8 +31,7 @@ public class Donation {
     @NotNull
     private Integer quantity;
 
-    @OneToMany
-    @JoinColumn(name="id_categoory")
+    @ManyToMany
     private List<Category> categories = new ArrayList<>();
 
     @ManyToOne
@@ -51,7 +51,7 @@ public class Donation {
     @Column(name = "pick_up_date")
     LocalDate pickUpDate;
 
-    @NotBlank
+
     @Column(name = "pick_up_time")
     LocalTime pickUpTime;
 
