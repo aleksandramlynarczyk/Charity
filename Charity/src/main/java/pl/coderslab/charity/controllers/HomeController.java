@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.model.Donation;
 import pl.coderslab.charity.model.Institution;
+import pl.coderslab.charity.model.User;
 import pl.coderslab.charity.repository.DonationRepository;
 import pl.coderslab.charity.repository.InstitutionRepository;
 import pl.coderslab.charity.repository.UserRepository;
@@ -26,6 +27,8 @@ public class HomeController {
     @Autowired
     DonationRepository donationRepository;
 
+
+
     @RequestMapping("/")
     public String homeAction(Model model, Principal principal){
         List<Institution> institutions = institutionRepository.findAll();
@@ -35,9 +38,16 @@ public class HomeController {
         for (Donation donation:donations) {
             numberOfBags+=donation.getQuantity();
         }
+        if(principal!=null){
+            User user = userRepository.findUserByEmail(principal.getName());
+            model.addAttribute("user", user);
+        }
+
+
         model.addAttribute("institutions", institutions);
         model.addAttribute("numberOfBags", numberOfBags);
         model.addAttribute("numberOfDonations", numberOfDonations);
+
 
         return "index";
     }

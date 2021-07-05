@@ -2,7 +2,6 @@ package pl.coderslab.charity.model;
 
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,7 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 
-@Getter
+
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -33,6 +32,14 @@ public class User implements UserDetails {
     private String role;
 
     @NotBlank
+    @Column(name = "first_name")
+    private String firstName;
+
+    @NotBlank
+    @Column(name = "last_name")
+    private String lastName;
+
+    @NotBlank
     @Email
     private String email;
 
@@ -42,6 +49,14 @@ public class User implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(new SimpleGrantedAuthority(role));
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getRole() {
+        return role;
     }
 
     @Override
@@ -54,6 +69,9 @@ public class User implements UserDetails {
         return password;
     }
 
+    public long getId() {
+        return id;
+    }
 
     @Override
     public boolean isAccountNonExpired() {

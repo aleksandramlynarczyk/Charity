@@ -10,17 +10,10 @@ import pl.coderslab.charity.repository.UserRepository;
 
 
 @Service
-public class UserDetailsServiceImpl implements UserDetailsService {
-
-
-    private UserRepository userRepository;
+public class MyUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    public UserDetailsServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-
+    private UserRepository userRepository;
 
 
     @Override
